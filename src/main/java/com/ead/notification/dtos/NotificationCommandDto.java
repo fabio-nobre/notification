@@ -9,7 +9,6 @@ public class NotificationCommandDto {
     private UUID userId;
 
     public String getTitle() {
-
         return title;
     }
 
