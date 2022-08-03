@@ -1,0 +1,55 @@
+server:
+  port: 8084
+  servlet:
+    context-path: '/ead-notification/'
+
+spring:
+  application:
+    name: ead-notification-service #ID da Eureka: Registrar - Fazer descobertas
+  config: # Definições config-server
+    import: 'optional:configserver:' #optional: para caso o config-server esteja indisponivel levar em consideração configurações local
+  cloud:
+    config:
+      discovery:
+        serviceId: ead-config-server
+  datasource:
+    url:  jdbc:postgresql://localhost:5432/eadnotification2
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
+      hibernate:
+        show_sql: true
+  output:
+    ansi:
+      enabled: Always
+  rabbitmq:
+    addresses: amqps://bygijfjz:dss9aHxJm43TdTU3omlJYVAzbWUK-pQC@stingray.rmq.cloudamqp.com/bygijfjz
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+# inserir broker properties
+management:
+  endpoints:
+    web:
+      exposure:
+        include:  #actuation
+          - refresh
+          - health
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: 'http://localhost:8761/eureka'
+  instance:
+    hostname: localhost
