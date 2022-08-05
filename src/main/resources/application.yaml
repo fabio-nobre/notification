@@ -7,7 +7,7 @@ spring:
   application:
     name: ead-notification-service #ID da Eureka: Registrar - Fazer descobertas
   config: # Definições config-server
-    import: 'optional:configserver:' #optional: para caso o config-server esteja indisponivel levar em consideração configurações local
+    import: 'configserver:' #optional: para caso o config-server esteja indisponivel levar em consideração configurações local
   cloud:
     config:
       discovery:
