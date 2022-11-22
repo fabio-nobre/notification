@@ -10,7 +10,7 @@ spring:
         serviceId: ead-config-server
       # credencias para acessar config-server com a implementação de spring-security
       username: configserver
-      password: 'ead123cs' 
+      password: 'ead123cs'
 
 
 
